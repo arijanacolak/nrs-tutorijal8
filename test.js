@@ -29,7 +29,6 @@ describe('Gradovi', () => {
   })
 
   after(() =>{ 
-
     let db = new sqlite3.Database('./Gradovi.db', (err) => {
       if (err) {
         return console.error(err.message);
@@ -38,6 +37,27 @@ describe('Gradovi', () => {
     });
   })
 
+  beforeEach(function () {
+    let db = new sqlite3.Database('./Gradovi.db', (err) => {
+      if (err) {
+        return console.error(err.message);
+        }
+      });
+    })
+
+afterEach(function () {
+  let db = new sqlite3.Database('./Gradovi.db', (err) => {
+    if (err) {
+      return console.error(err.message);
+    }
+  db.close((err) => {
+    if (err) {
+        return console.error(err.message);
+    }
+    console.log('Close the database connection.');
+   });
+ });
+});
   describe('/GET gradovi', () => {
     it('treba prikazati sve gradove', (done) => {
       chai.request(server)
