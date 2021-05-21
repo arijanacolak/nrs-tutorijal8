@@ -106,7 +106,7 @@ describe('Gradovi', () => {
   });
 
   describe('/DELETE gradovi/:id', () => {
-    it('treba izmijeniti broj stanovnika', (done) => {
+    it('treba obrisati grad', (done) => {
         chai.request(server)
         .delete('/gradovi/1')
         .end((err, res) => {
