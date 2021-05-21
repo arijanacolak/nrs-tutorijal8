@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "d177d367-f82b-40de-83b9-f9318942d9fb",
+		"name": "Tut8",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Tut8-DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"treba obrisati grad\",() => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"  pm.expect(pm.response.body).to.be.a('string');\r",
+							"  pm.expect(pm.response.text()).to.include(\"Grad je obrisan\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5001/gradovi/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"gradovi",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tut8-POST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"  pm.test(\"treba kreirati novi grad\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"  pm.expect(pm.response).to.be.a('object');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"VitessHaddn Biz\",\r\n    \"brojStanovnika\": 253000\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5001/grad",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"grad"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tut8-PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"  pm.test(\"treba kreirati novi grad\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"  pm.expect(pm.response).to.be.a('object');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5001/gradovi/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"gradovi",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tut8-GET gradovi",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"  pm.test(\"treba prikazati sve gradove\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"  pm.expect(pm.response).to.be.a('object');\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson).to.be.a('array');\r",
+							"  pm.expect(responseJson).to.have.length.least(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5001/gradovi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"gradovi"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
